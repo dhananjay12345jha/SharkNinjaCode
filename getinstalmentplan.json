@@ -1,0 +1,62 @@
+{
+  "actualRefundAmount": 0,
+  "changePlanAllowed": "string",
+  "customerId": "string",
+  "customerNo": "string",
+  "emailId": "string",
+  "instalmentPaidDate": "string",
+  "instalmentPlanTotal": 0,
+  "invoices": [
+    {
+      "amountDue": 0,
+      "amountPaid": 0,
+      "amountRemaining": 0,
+      "attemptCount": 0,
+      "chargeId": "string",
+      "createdDate": 0,
+      "instalmentNumber": 0,
+      "last4Digit": "string",
+      "paymentIntentId": "string",
+      "refundAmount": 0,
+      "status": "string",
+      "subscriptionId": "string"
+    }
+  ],
+  "last4Digit": "string",
+  "nextDueAmount": 0,
+  "nextPaymentPlanned": 0,
+  "order": {
+    "createdDate": 0,
+    "currency": "string",
+    "discountAmount": 0,
+    "orderId": "string",
+    "products": [
+      {
+        "currency": "string",
+        "discountAmount": 0,
+        "name": "string",
+        "price": 0,
+        "productId": "string",
+        "productImageURL": "string",
+        "quantity": 0
+      }
+    ],
+    "shippingAmount": 0,
+    "subTotalAmount": 0,
+    "totalOrderAmount": 0,
+    "vatAmount": 0
+  },
+  "paidAmount": 0,
+  "paymentUpdateLinkCreatedAt": 0,
+  "planCreatedDate": 0,
+  "planEndDate": 0,
+  "planStatus": "string",
+  "subscriptionId": "string",
+  "totalAmountDue": 0,
+  "totalAmountPaid": 0,
+  "totalLeftInstalments": 0,
+  "totalNumberOfInstalments": 0,
+  "totalPaidInstalments": 0,
+  "totalRefundAmount": 0,
+  "upcomingInstalmentDate": "string"
+}

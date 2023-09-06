@@ -1,0 +1,10 @@
+{
+  "queryString": "banks",
+  "resultContext": {
+    "maxResults": "3",
+    "aspects": [
+      "title",
+      "lifecycle"
+    ]
+  }
+}

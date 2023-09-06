@@ -1,0 +1,1920 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.salmon.test</groupId>
+    <artifactId>SharkNinja</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Test Profiles, define URL for AUT, Browser and Test Suites -->
+    <profiles>
+        <!-- Development environment @ my local machine -->
+
+        <profile>
+            <id>SharkUSSmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkUSSmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUSSmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaUSSmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUSRegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunNinjaUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUSRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUSRegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkUSRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkUSRegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunSharkUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkUSRegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUS.properties</profile.path>
+                <profile.env>/props/SNUS_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkUSRegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCASmokeEN</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkCASmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkCASmokeFR</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkCASmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCARegressionEN</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkCARegression*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCARegressionENEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunSharkCARegression*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCARegressionENMobileNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCARegressionFRMobileNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkCARegressionFR</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkCARegression*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>NinjaCASmokeEN</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaCASmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaCASmokeFR</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaCASmoke*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaCARegressionENMobileNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>NinjaCARegressionFRMobileNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>NinjaCARegressionEN</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaCARegressionENEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAEN.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunNinjaCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaCARegressionFR</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaCAFR.properties</profile.path>
+                <profile.env>/props/SNCA_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaCARegressionSuit*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>APITest</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuite*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>APITest_UK_UAT</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API_UK_UAT.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuiteUK.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>APITest_NA_UAT</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API_NA_UAT.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuiteNA*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>APITest_DE_UAT</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API_DE_UAT.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuiteDE.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>APITest_CA_UAT</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API_CA_UAT.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuiteCA*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>APITest_US_UAT</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_API_US_UAT.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*ApiATSuiteUS*.class</testToRun>
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteSharkUS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkUS.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkUSMicroSite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteSharkUSNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkUS.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*SharkUSMicroSiteNexus*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteNinjaUS</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaUS.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaUSMicroSite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteNinjaUSNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaUS.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*NinjaUSMicroSiteNexus*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteSharkUK</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkUK.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkUKMicroSite.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>MicroSiteSharkUKNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkUK.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*SharkUKMicroSiteNexus.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>MicroSiteNinjaUKBulkOrderCreation</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaUKBulkOrderCreationInstallment.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkUKBulkOrderCreation</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkUKBulkOrderCreationInstallment.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteNinjaUK</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaUKMicroSite.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteNinjaUKNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*NinjaUKMicroSiteNexus.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>MicroSiteSharkDE</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkDE.properties</profile.path>
+                <profile.env>/props/de_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkDEMicroSite.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>MicroSiteSharkDENexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_SharkDE.properties</profile.path>
+                <profile.env>/props/de_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*SharkDEMicroSiteNexus.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>MicroSiteNinjaDENexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*NinjaDEMicroSiteNexus.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>MicroSiteNinjaDE</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_MicroSite_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_microSite_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaDEMicroSite.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pwa</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkCA.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*WebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SNAPUK</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNAPUK.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SnapUKWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SNEXUK</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNEXUK.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SnexUKWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SNEXCA</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNEXCA.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SnexCAWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <id>SNEXDE</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNEXDE.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SnexDEWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <id>SNAPDE</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNAPDE.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*DEWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SNAPCA</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SNAPCA.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SnapCAWebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkUKRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkUKRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkUKRegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunSharkUKRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkUKRegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkUKRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkUKRegressionIPad</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IpadTablet.properties</profile.device>
+                <testToRun>**/*MobileSharkUKRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkUKRegressionIphone</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IphoneMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkUKRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkUKSmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkUKSmoke*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkDERegression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkDERegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile><profile>
+        <id>SharkDECmsPilotRegression</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <profile.path>/profiles/CMS/config_SharkDE_NextJS.properties</profile.path>
+            <profile.env>/props/de_messages.properties</profile.env>
+            <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+            <testToRun>**/*RunSharkDERegressionCmsPilot*.class</testToRun>
+            <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+            <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+            <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+            <testFailureIgnore>true</testFailureIgnore>
+        </properties>
+    </profile>
+        <profile>
+            <id>SharkDERegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunSharkDERegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>NinjaDERegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunNinjaDERegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkDERegressionIphone</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IphoneMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkDERegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkDERegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileSharkDERegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkDESmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*SharkDESmoke*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaUKRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKRegressionEdge</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_BSDesktopEdge.properties</profile.device>
+                <testToRun>**/*RunNinjaUKRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKRegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaUKRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKRegressionIPad</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IpadTablet.properties</profile.device>
+                <testToRun>**/*MobileNinjaUKRegressionSuit*.class</testToRun>
+                <testToRun>**/*NinjaUKRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKRegressionIphone</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IphoneMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaUKRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUKSmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/en_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaUKSmoke*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaDERegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaDERegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaDERegressionNexus</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_NexusMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaDERegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaDERegressionIphone</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_IphoneMobile.properties</profile.device>
+                <testToRun>**/*MobileNinjaDERegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaDESmoke</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaDE.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*NinjaDESmoke*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaUK</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaUK.properties</profile.path>
+                <profile.env>/props/messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*WebATSuite*.class</testToRun>
+                <!-- <testToRun>**/*ApiATSuite*.class</testToRun> -->
+                <!--<testToRun>**/*ApiATSuite*.class</testToRun> &lt;!&ndash;For API tests&ndash;&gt;-->
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <!-- Single Test -->
+        <profile>
+            <id>single</id>
+            <properties>
+                <profile.path>/profiles/single/config.properties</profile.path>
+                <testToRun>**/*SingleSuite.class</testToRun>
+            </properties>
+        </profile>
+
+        <!-- Jenkins environment @ deploy server normally configured on linux -->
+        <profile>
+            <id>jenkins</id>
+            <properties>
+                <profile.path>/profiles/jenkins/config.properties</profile.path>
+                <testToRun>**/*JenkinsSuite.class</testToRun>
+            </properties>
+        </profile>
+
+        <!-- Running tets on mobile -->
+        <profile>
+            <id>mobile</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/mobile/config.properties</profile.path>
+                <testToRun>**/*RunWebAppSuite.class</testToRun>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SharkFRRegression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkFR.properties</profile.path>
+                <profile.env>/props/fr_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkFRRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkITRegression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkIT.properties</profile.path>
+                <profile.env>/props/it_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkITRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>SharkESRegression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_SharkES.properties</profile.path>
+                <profile.env>/props/es_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunSharkESRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>NinjaFRRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaFR.properties</profile.path>
+                <profile.env>/props/fr_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaFRRegression*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaITRegression</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaIT.properties</profile.path>
+                <profile.env>/props/it_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaITRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>NinjaESRegression</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaES.properties</profile.path>
+                <profile.env>/props/es_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunNinjaESRegressionSuit*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+        <profile>
+            <id>StockApi</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.path>/profiles/dev/config_NinjaES.properties</profile.path>
+                <profile.env>/props/de_messages.properties</profile.env>
+                <profile.device>/devices/executionmod_HeadlessChrome.properties</profile.device>
+                <testToRun>**/*RunApiSuite*.class</testToRun>
+                <rerunFailed>**/*RerunFailedScenariosSuite*.class</rerunFailed>
+                <OverwriteResultIfRerunPassed>true</OverwriteResultIfRerunPassed>
+                <rerunJsonMerger>**/*RerunJsonMerger.class</rerunJsonMerger>
+                <testFailureIgnore>true</testFailureIgnore>
+            </properties>
+        </profile>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </profiles>
+
+    <properties>
+        <cucumber.version>1.2.5</cucumber.version>
+        <selenium.version>3.14.0</selenium.version>
+        <junit.version>4.12</junit.version>
+        <phantomjs.version>1.4.3</phantomjs.version>
+        <slf4jVersion>1.7.25</slf4jVersion>
+        <cucumber-jvm-deps>1.0.5</cucumber-jvm-deps>
+        <rest-assured>4.1.1</rest-assured>
+        <jackson-core>2.9.7</jackson-core>
+        <commons-io>2.6</commons-io>
+        <commons-lang>3.8.1</commons-lang>
+        <lombok>1.18.4</lombok>
+        <assertj-assert>3.11.1</assertj-assert>
+        <appium-java-client>6.1.0</appium-java-client>
+        <common-db-utils>1.6</common-db-utils>
+        <maven-surefire-plugin>2.22.1</maven-surefire-plugin>
+        <maven-resource-plugin>3.1.0</maven-resource-plugin>
+        <maven-compiler-plugin>3.8.0</maven-compiler-plugin>
+        <maven-cucumber-reporting>4.7.0</maven-cucumber-reporting>
+        <!-- 4.7.0 -->
+        <testng>6.14.3</testng>
+        <utf-8>UTF-8</utf-8>
+        <joda-time>2.5</joda-time>
+        <java-version>1.8</java-version>
+        <mysql>5.1.6</mysql>
+        <db2.version>1.4.2</db2.version>
+        <!-- 3.8.47 -->
+        <oracle.version>10.2.0.5</oracle.version>
+        <maven-install-plugin>3.3.9</maven-install-plugin>
+        <podam>6.0.2.RELEASE</podam>
+    </properties>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin}</version>
+                <configuration>
+                    <encoding>${utf-8}</encoding>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <threadCount>4</threadCount>
+                            <perCoreThreadCount>true</perCoreThreadCount>
+                            <forkCount>4</forkCount>
+                            <reuseForks>false</reuseForks>
+                            <argLine>-Duser.language=en</argLine>
+                            <argLine>-Xmx1024m</argLine>
+                            <argLine>-XX:MaxPermSize=256m</argLine>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <useFile>false</useFile>
+                            <includes>
+                                <include>${testToRun}</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <systemPropertyVariables>
+                                <!--suppress UnresolvedMavenProperty -->
+                                <profileId>${project.activeProfiles[0].id}</profileId>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>reportMerge</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <threadCount>1</threadCount>
+                            <perCoreThreadCount>true</perCoreThreadCount>
+                            <forkCount>1</forkCount>
+                            <reuseForks>false</reuseForks>
+                            <useFile>false</useFile>
+                            <includes>
+                                <include>**/*com.salmon.test.framework.helpers.ReportMerger*.class</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>rerun</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <threadCount>1</threadCount>
+                            <perCoreThreadCount>true</perCoreThreadCount>
+                            <forkCount>1</forkCount>
+                            <reuseForks>false</reuseForks>
+                            <argLine>-Duser.language=en</argLine>
+                            <argLine>-Xmx1024m</argLine>
+                            <argLine>-XX:MaxPermSize=256m</argLine>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <useFile>false</useFile>
+                            <includes>
+                                <include>${rerunFailed}</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>rerunReportMerger</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>
+                                -DdirectoriesToMerge=target/cucumber-report/initialMerge:target/cucumber-report/reRunReport
+                            </argLine>
+                            <threadCount>1</threadCount>
+                            <perCoreThreadCount>true</perCoreThreadCount>
+                            <forkCount>1</forkCount>
+                            <reuseForks>false</reuseForks>
+                            <useFile>false</useFile>
+                            <includes>
+                                <include>**/*com.salmon.test.framework.helpers.JsonReportHandler.class</include>
+                            </includes>
+                            <testFailureIgnore>true</testFailureIgnore>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resource-plugin}</version>
+                <configuration>
+                    <!-- specify UTF-8, ISO-8859-1 or any other file encoding -->
+                    <encoding>${utf-8}</encoding>
+
+                    <resources>
+                        <resource>
+                            <directory>src/main/resources</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>${maven-cucumber-reporting}</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>cucumbertests</projectName>
+                            <!--<checkBuildResult>false</checkBuildResult>-->
+                            <outputDirectory>target/cucumber-report/finalReport</outputDirectory>
+                            <jsonFiles>
+                                <param>cucumber.json</param>
+                            </jsonFiles>
+
+                            <!--enableFlashCharts>false</enableFlashCharts-->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+        <!-- Instructing the resources plugin to filter certain directories -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+
+    </build>
+
+
+    <!-- All the test dependencies should be declared in this section -->
+    <dependencies>
+
+        <dependency>
+            <groupId>com.github.2gis.winium</groupId>
+            <artifactId>winium-webdriver</artifactId>
+            <version>0.1.0-1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0-jre</version>
+        </dependency>
+        <!-- Cucumber -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-jvm</artifactId>
+            <scope>test</scope>
+            <version>4.2.0</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>2.4.0</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>2.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Cucumber -->
+        <!--Selenium Webdriver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Selenium Webdriver -->
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng}</version>
+        </dependency>
+
+        <!-- Api Level Testing -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured}</version>
+        </dependency>
+        <!-- Api Level Testing -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-core}</version>
+        </dependency>
+
+        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io}</version>
+        </dependency>
+        <!--Commons-IO contains utility classes, stream implementations, file filter,-->
+
+        <!--Commons-lang3   a package of Java utility classes -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang}</version>
+        </dependency>
+        <!--Commons-lang3   a package of Java utility classes -->
+
+        <!-- Date Time support -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time}</version>
+        </dependency>
+        <!-- Date Time support -->
+
+        <!--Logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+
+        <!-- <dependency>
+           <groupId>org.slf4j</groupId>
+           <artifactId>slf4j-simple</artifactId>
+           <version>${slf4jVersion}</version>
+         </dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+
+
+        <!-- lombok for Getter Setters-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--lombok -->
+
+
+        <!-- matchers -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-assert}</version>
+        </dependency>
+        <!-- matchers -->
+
+
+        <!-- appium -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium-java-client}</version>
+        </dependency>
+        <!-- appium -->
+
+        <!-- database connectivity-->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${common-db-utils}</version>
+        </dependency>
+        <!-- database connectivity-->
+
+        <!--mysql database driver-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql}</version>
+        </dependency>
+        <!--mysql database driver-->
+
+
+        <!--  DB2 database dependency
+          <dependency>
+              <groupId>com.ibm.db2.jcc</groupId>
+              <artifactId>db2jcc</artifactId>
+              <version>${db2.version}</version>
+              <scope>system</scope>
+              <systemPath>${project.basedir}/tools/lib/db2jcc.jar</systemPath>
+          </dependency>
+
+          <dependency>
+              <groupId>com.ibm.db2.jcc</groupId>
+              <artifactId>db2jcc_license_cu</artifactId>
+              <version>${db2.version}</version>
+              <scope>system</scope>
+              <systemPath>${project.basedir}/tools/lib/db2jcc_license_cu.jar</systemPath>
+          </dependency>
+
+          oracle database dependency
+          <dependency>
+              <groupId>com.oracle</groupId>
+              <artifactId>ojdbc14</artifactId>
+              <version>${oracle.version}</version>
+              <scope>system</scope>
+              <systemPath>${project.basedir}/tools/lib/ojdbc14.jar</systemPath>
+          </dependency>
+          oracle database dependency
+    -->
+        <!--auto fill random data to POJO-->
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>${podam}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!--auto fill random data to POJO-->
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.leangen.geantyref</groupId>
+            <artifactId>geantyref</artifactId>
+            <version>1.3.4</version>
+        </dependency>
+
+        <!-- <dependency> -->
+        <!-- <groupId>com.codeborne</groupId> -->
+        <!-- <artifactId>phantomjsdriver</artifactId> -->
+        <!-- <version>1.4.0</version> -->
+        <!-- <scope>test</scope> -->
+        <!-- </dependency> -->
+
+
+        <!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-local-java</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>

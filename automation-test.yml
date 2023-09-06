@@ -1,0 +1,80 @@
+trigger:
+  - "refs/tags/*"
+  
+#pool: AgentsUbuntu2004-2
+
+variables:
+  projectName: "smoke-functional-test"
+  
+
+stages:
+  - stage: Build
+    displayName: "SharkNinja Functional Testing Pipeline"
+    jobs:
+      - job: functionalTests
+        displayName: "SharkNinja Functional Testing Pipeline"
+        timeoutInMinutes: 360
+        pool: AgentsUbuntu2004-2
+      
+        steps:
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '8'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+
+          - bash: |
+             #! /bin/bash
+             ## Define environment variables
+             varHOSTNAME=$(hostname)
+             sudo apt-get install openjdk-8-jre
+             sudo apt-get -y install maven
+             echo ">>> I am running on node: $varHOSTNAME <<<"
+             echo ""
+             curl -s http://ipinfo.io/json | jq '.ip'
+             echo ">>> Java Version <<<"
+             java -version
+             echo ""
+             echo ">>> Maven Version <<<"
+             mvn -version
+             echo ""
+             if [ -z "$(test_Profile)" ]
+             then
+               echo 'No value was supplied for test_Profile, exiting'
+               exit 1
+             else
+               echo 'Testing against profile: $(test_Profile)'
+             fi
+             ## No validation for test.Options
+            displayName: 'Initialise Environment'
+
+          
+          - task: Maven@3
+            displayName: 'Run Selenium Testing Framework'
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'clean install'
+              options: '-Dbrowser=chrome -P$(pack)' 
+              publishJUnitResults: true
+              testResultsFiles: 'target/cucumber-report/cucumber.xml'
+              javaHomeOption: 'JDKVersion'
+              mavenVersionOption: 'Default'
+              mavenAuthenticateFeed: false
+              effectivePomSkip: false
+              sonarQubeRunAnalysis: false
+            condition: succeededOrFailed()
+
+          - task: ArchiveFiles@2
+            displayName: 'Archive: HTML Test Results'
+            inputs:
+             rootFolderOrFile: '$(Build.SourcesDirectory)/target/cucumber-report/'
+             includeRootFolder: false
+             archiveFile: '$(Build.StagingDirectory)/$(projectName)-results-$(Build.BuildId).zip'
+            condition: succeededOrFailed()
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: HTML Test Results'
+            inputs:
+             PathtoPublish: '$(Build.StagingDirectory)/$(projectName)-results-$(Build.BuildId).zip'
+             ArtifactName: '$(projectName)-results'
+            condition: succeededOrFailed()
